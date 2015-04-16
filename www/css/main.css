@@ -156,3 +156,18 @@ input, select{
 #icon2{ background-image: url(../img/calendar.svg);}
 #icon3{ background-image: url(../img/gift.svg);}
 #icon4{ background-image: url(../img/gift.svg);}
+
+.btnBack{
+    background-color: #ddd;
+    border: none;
+    border-radius: 0.5rem;
+    width: 5rem;
+    height: 2rem;
+    font-size: 1rem;
+    font-weight: bold; 
+}
+.btnBack:active{
+    opacity: 0.6;
+    background-color: #fff;
+
+}
