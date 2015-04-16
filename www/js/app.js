@@ -1,11 +1,9 @@
 //app.js
 var db = openDatabase('dataappDB', '1.0', 'DataApp DB', 1024*1024);
 
-//Cordova data app: back button on gift pages, double tap delete (and remove from database),  monochromatic, github repo
-
+//steps left:
+//Cordova data app: back button on gift pages, double tap delete (and remove from database),  monochromatic,
 //when loadPage(gift-idea) and loadPage(gift-occ) are fired -> Select query with occ_id, person_id, gift_idea
-//back button on persGiftIdea-> loadPage(people)
-//back button on occGiftIdea -> loadPage(occasions)
 //double tap on peopleview-> DELETE people_name FROM people WHERE people_id IS e.target.data-ref
 
 
@@ -22,8 +20,8 @@ var app= {
 		}
 	},
 	onDomReady: function(){
-		//app.loadRequirements++;
-        app.loadRequirements = 2;
+		app.loadRequirements++;
+        //app.loadRequirements = 2;
 		if(app.loadRequirements === 2){
 			app.start();
 		}
@@ -202,6 +200,15 @@ function Hammertime(){
         for (var i = 0; i <	selected.length; i++) {
    	        selected[i].addEventListener("click", app.cancel);
         }
+    
+    //BACK BUTTON ON gifts pages
+     var btnBack1 = document.getElementById('btnBack1');
+        var bb1 = new Hammer(btnBack1);
+        bb1.on("tap", function(){ loadPage('people') });
+    
+    var btnBack2 = document.getElementById('btnBack2');
+        var bb2 = new Hammer(btnBack2);
+        bb2.on("tap", function(){ loadPage('occasion') });
 
     //PEOPLE
     var peoplePage = document.getElementById('peoplePage');
@@ -341,29 +348,7 @@ function loadPage(page){
 function loadModal(modal){
     document.getElementById(modal).style.display="block";
     document.querySelector("[data-role=overlay]").style.display="block";
-    /*
-    switch(modal){
-        case 'add-person': 
-            document.getElementById(modal).style.display="block";
-            document.querySelector("[data-role=overlay]").style.display="block";
-            //var item = ev.target.getAttribute("data-ref");
-            //var itemVal = ev.target.innerHTML;
-            //document.getElementById("list").value = item;
-            break;
-        case 'add-occasion': 
-            document.getElementById(modal).style.display="block";
-            document.querySelector("[data-role=overlay]").style.display="block";
-            break;
-        case 'add-gift': 
-            document.getElementById(modal).style.display="block";
-            document.querySelector("[data-role=overlay]").style.display="block";
-            break;  
-        case 'add-gift-for-occ': 
-            document.getElementById(modal).style.display="block";
-            document.querySelector("[data-role=overlay]").style.display="block";
-            break;
-    }
-    */
+
 }
 
 
